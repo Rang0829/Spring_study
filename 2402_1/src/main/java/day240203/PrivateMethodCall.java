@@ -1,6 +1,8 @@
-package day240202;
+package day240203;
 
 import java.lang.reflect.Method;
+
+import day240202.Hello;
 
 public class PrivateMethodCall {
 	public static void main(String[] args) throws Exception{
