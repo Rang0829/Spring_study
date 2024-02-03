@@ -11,14 +11,14 @@ public class Hello {
 	
 	// 2. URL과 메서드 연결
 	@RequestMapping("/hello")
-	private void main() { // 인스턴스 메서드 - iv, cv 둘 다 사용 가능
-		System.out.print("Hello - private");
-		System.out.println(cv);
-//		System.out.println(iv);
+	private void main() { // 인스턴스 메서드 - iv, cv 둘 다 사용 가능.
+		System.out.println("Hello - private");
+		System.out.println(cv); // 가능.
+//		System.out.println(iv); // 가능.
 	}
 	
-	public static void main2() { // static 메서드 - cv만 사용 가능
-		System.out.println(cv); // ok
+	public static void main2() { // static 메서드 - cv만 사용 가능.
+		System.out.println(cv); // 가능.
 //		System.out.println(iv); // 에러.
 		
 	}
