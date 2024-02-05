@@ -21,7 +21,7 @@ public class YoilTellerMVC2 {
 	 // 1. ModelAndView를 생성
     ModelAndView mv = new ModelAndView(); 
 	
-	// 2. 유효성 검사 
+	// 2. 유효성 검사
 	if(!isValid(year, month, day)) {
 	   mv.setViewName("yoilError"); // View의 이름을 지정
       return mv;
