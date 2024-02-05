@@ -1,4 +1,4 @@
-package day240203;
+package com.rangrang.two;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class TwoDice { 
+public class TwoDice {  
 	
 	@RequestMapping("/rollDice")
 	public void main(HttpServletResponse response) throws IOException {

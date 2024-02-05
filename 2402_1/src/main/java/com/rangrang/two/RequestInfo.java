@@ -1,4 +1,4 @@
-package day240203;
+package com.rangrang.two;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
