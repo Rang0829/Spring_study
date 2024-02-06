@@ -25,8 +25,8 @@ public class MethodCall2 {
 		System.out.println("[before] model="+model);
 		
 		// 4. main 메서드 호출
-		// String viewName = obj.main(2021, 10, 1, model); // 아래 줄과 동일
-		String viewName = (String)main.invoke(obj, new Object[] { 2021, 10, 1, model }); // Reflection API 이용한 호출(좀 더 유연한 방법)
+		// String viewName = obj.main(2024, 2, 6, model); // 아래 줄과 동일
+		String viewName = (String)main.invoke(obj, new Object[] { 2024, 2, 6, model }); // Reflection API 이용한 호출(좀 더 유연한 방법)
 		System.out.println("viewName="+viewName);	
 		
 		// Model의 내용을 출력 

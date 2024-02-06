@@ -12,7 +12,7 @@ import java.util.Calendar;
 
 @Controller
 public class YoilTellerMVC {
-    @RequestMapping("/getYoilMVC") // http://localhost:8080/Spring%202402_2/getYoilMVC?year=2024&month=2&day=5
+    @RequestMapping("/getYoilMVC") // http://localhost:8080/Spring%2402_2/getYoilMVC?year=2024&month=2&day=5
 //    public void main(HttpServletRequest request, HttpServletResponse response) throws IOException {
       public String main(int year, int month, int day, Model model) throws IOException {
     	

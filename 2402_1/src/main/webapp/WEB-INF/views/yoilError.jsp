@@ -6,6 +6,9 @@
 	<title>Home</title>
 </head>
 <body>
-<p> ${year}년 ${month}월 ${day}일은 ${yoil}요일입니다.</p>
+<h1>
+	잘못된 요청입니다.<br>
+	년, 월, 일을 모두 올바르게 입력해 주세요.
+</h1>
 </body>
 </html>

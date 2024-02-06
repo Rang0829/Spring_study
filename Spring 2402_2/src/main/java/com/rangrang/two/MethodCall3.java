@@ -17,9 +17,9 @@ public class MethodCall3 {
 	public static void main(String[] args) throws Exception{
 		// 1. 요청할 때 제공된 값 - request.getParameterMap();
 		Map map = new HashMap();
-		map.put("year", "2021");
-		map.put("month", "10");
-		map.put("day", "1");
+		map.put("year", "2024");
+		map.put("month", "2");
+		map.put("day", "6");
 
 		Model model = null;
 		Class clazz = Class.forName("com.rangrang.two.YoilTellerMVC");
