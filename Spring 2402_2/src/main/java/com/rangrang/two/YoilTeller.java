@@ -11,7 +11,7 @@ import java.util.Calendar;
 
 @Controller // 프로그램 등록
 public class YoilTeller {
-    @RequestMapping("/getYoil") // http://localhost:8080/2402_1/getYoil?year=2021&month=10&day=1
+    @RequestMapping("/getYoil") // http://localhost:8080/Spring%2402_2/getYoil?year=2024&month=2&day=6
     //    public static void main(String[] args) {
     public void main(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // 1. 입력

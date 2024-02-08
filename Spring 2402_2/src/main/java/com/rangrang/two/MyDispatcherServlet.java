@@ -20,7 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.support.BindingAwareModelMap;
 
 // @Controller + @RequestMapping
-@WebServlet("/myDispatcherServlet")  // http://localhost/Spring%2402_2/myDispatcherServlet?year=2024&month=2&day=6
+@WebServlet("/myDispatcherServlet")  // http://localhost:8080/Spring%2402_2/myDispatcherServlet?year=2024&month=2&day=6
 public class MyDispatcherServlet extends HttpServlet {
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
