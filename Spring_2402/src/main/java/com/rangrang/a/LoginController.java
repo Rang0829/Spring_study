@@ -3,7 +3,9 @@ package com.rangrang.a;
 import java.net.URLEncoder;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,11 +20,21 @@ public class LoginController {
 		return "loginForm";
 	}
 	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		// 1. 세션 종료
+		session.invalidate();
+		// 2. 홈으로 이동
+		return "redirect:/";
+		
+	}
+	
 	@PostMapping("/login")
-	public String login(String id, String pwd, boolean rememberId, HttpServletResponse response) throws Exception {
-		System.out.println("id = " + id);
-		System.out.println("pwd = " + pwd);
-		System.out.println("rememberId = " + rememberId);
+	public String login(String id, String pwd, String toURL, boolean rememberId,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+//		System.out.println("id = " + id);
+//		System.out.println("pwd = " + pwd);
+//		System.out.println("rememberId = " + rememberId);
 		
 		// 1. id와 pwd를 확인.
 		if(!loginCheck(id, pwd)) {
@@ -32,6 +44,11 @@ public class LoginController {
 			return "redirect:/login/login?msg=" + msg;
 		}
 		// 2-2. id와 pwd가 일치하면,
+		// 세션 객체를 얻어오기
+		HttpSession session = request.getSession();
+		// 세션 객체에 id 저장
+		session.setAttribute("id", id);
+		
 		if(rememberId) {
 			// 체크박스를 체크하면 쿠키 생성.
 			Cookie cookie = new Cookie("id", id);
@@ -44,8 +61,10 @@ public class LoginController {
 			response.addCookie(cookie);
 			
 		}
-		//		3. 홈으로 이동.
-		return "redirect:/";
+		//		3. 홈으로 이동. (toURL 값이 제대로 넘어오지 않으면 홈으로 가게, toURL 값이 있으면 toURL로 가게 한다)
+		toURL = toURL==null || toURL.equals("") ? "/" : toURL;
+		
+		return "redirect:" + toURL;
 	}
 	
 	private boolean loginCheck(String id, String pwd) {
