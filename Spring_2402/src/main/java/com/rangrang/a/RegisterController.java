@@ -1,17 +1,30 @@
 package com.rangrang.a;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.beans.propertyeditors.StringArrayPropertyEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class RegisterController {
+	
+	@InitBinder
+	public void toDate(WebDataBinder binder) {
+//		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+//		binder.registerCustomEditor(Date.class, new CustomDateEditor(df, false));
+		binder.registerCustomEditor(String[].class, "hobby", new StringArrayPropertyEditor("#"));
+	}
+	
 	@RequestMapping(value="/register/add", method= {RequestMethod.GET, RequestMethod.POST})
 	public String register() {
 		return "registerForm"; // WEB-INF/views/registerForm.jsp
@@ -19,7 +32,9 @@ public class RegisterController {
 	
 //	@RequestMapping(value="/register/save", method=RequestMethod.POST)
 	@PostMapping("/register/save")   // 스프링 4.3버전 부터 가능
-	public String save(User user, Model m) throws Exception {
+	public String save(User user, BindingResult result, Model m) throws Exception {
+		System.out.println("result = " + result);
+		System.out.println("user = " + user);
 		// 1. 유효성 검사
 		if(!isVaild(user)) {
 			String msg = URLEncoder.encode("id를 잘못 입력하셨습니다.", "utf-8");
@@ -35,6 +50,6 @@ public class RegisterController {
 	}
 
 	private boolean isVaild(User user) {
-		return false;
+		return true;
 	}
 }
