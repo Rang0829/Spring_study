@@ -31,21 +31,21 @@ public class RegisterController {
 	}
 	
 //	@RequestMapping(value="/register/save", method=RequestMethod.POST)
-	@PostMapping("/register/save")   // ½ºÇÁ¸µ 4.3¹öÀü ºÎÅÍ °¡´É
+	@PostMapping("/register/save")   // ìŠ¤í”„ë§ 4.3ë²„ì „ ë¶€í„° ê°€ëŠ¥
 	public String save(User user, BindingResult result, Model m) throws Exception {
 		System.out.println("result = " + result);
 		System.out.println("user = " + user);
-		// 1. À¯È¿¼º °Ë»ç
+		// 1. ìœ íš¨ì„± ê²€ì‚¬
 		if(!isVaild(user)) {
-			String msg = URLEncoder.encode("id¸¦ Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù.", "utf-8");
+			String msg = URLEncoder.encode("idë¥¼ ì˜ëª» ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤.", "utf-8");
 			
-			m.addAttribute("msg", msg);   // model¿¡ ´ã¾Æ¼­ ³Ñ±ä´Ù.
+			m.addAttribute("msg", msg);   // modelì— ë‹´ì•„ì„œ ë„˜ê¸´ë‹¤.
 			return "forward:/register/add";
 			
-//			return "redirect:/register/add?msg=" + msg;   // URL ÀçÀÛ¼º (rewriting) - URLÀ» °íÃÄ¼­ /register/add¿¡°Ô GET ¹æ½ÄÀ¸·Î URLÀ» Àü¼ÛÇÏ´Â °Í.
+//			return "redirect:/register/add?msg=" + msg;   // URL ì¬ì‘ì„± (rewriting) - URLì„ ê³ ì³ì„œ /register/addì—ê²Œ GET ë°©ì‹ìœ¼ë¡œ URLì„ ì „ì†¡í•˜ëŠ” ê²ƒ.
 		}
 		
-		// 2. DB¿¡ ½Å±ÔÈ¸¿ø Á¤º¸ ÀúÀå
+		// 2. DBì— ì‹ ê·œíšŒì› ì •ë³´ ì €ì¥
 		return "registerInfo";
 	}
 
