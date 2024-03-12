@@ -70,7 +70,7 @@
     <title>Register</title>
 </head>
 <body>
-<!-- <form action="<c:url value="/register/save"/>" method="POST" onsubmit="return formCheck(this)">   -->
+<!-- <form action="<c:url value="/register/add"/>" method="POST" onsubmit="return formCheck(this)">   -->
 	<form:form modelAttribute="user">
     <div class="title">Register</div>
     <div id="msg" class="msg"><form:errors path="id"/></div> 
@@ -81,7 +81,7 @@
     <label for="">이름</label>
     <input class="input-field" type="text" name="name" placeholder="홍길동">
     <label for="">이메일</label>
-    <input class="input-field" type="text" name="email" placeholder="example@fastcampus.co.kr"> 
+    <input class="input-field" type="text" name="email" placeholder="example@rangrang.co.kr"> 
     <label for="">생일</label>
     <input class="input-field" type="text" name="birth" placeholder="2020/12/31">
     <label for="">취미</label>

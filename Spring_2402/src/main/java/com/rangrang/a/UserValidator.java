@@ -5,6 +5,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 public class UserValidator implements Validator {
+	
 	@Override
 	public boolean supports(Class<?> clazz) {
 //		return User.class.equals(clazz); // 검증하려는 객체가 User 타입인지 확인.
@@ -19,7 +20,7 @@ public class UserValidator implements Validator {
 		
 		String id = user.getId();
 		
-//		if(id==null || "".equals(id.trim())) {
+//		if(id==null || "".equals(id.trim())) {		// id가 null이거나 빈 문자열이라면?
 //			errors.rejectValue("id", "required");   // id 필드에서 required 라는 에러 코드 저장.
 //		}
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "id",  "required");   // 비었거나 공백이면 id에 required 에러 코드 저장.

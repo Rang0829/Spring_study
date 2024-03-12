@@ -7,8 +7,8 @@ import org.springframework.validation.Validator;
 public class GlobalValidator implements Validator {
 	@Override
 	public boolean supports(Class<?> clazz) {
-//		return User.class.equals(clazz); // �����Ϸ��� ��ü�� UserŸ������ Ȯ��
-		return User.class.isAssignableFrom(clazz); // clazz�� User �Ǵ� �� �ڼ����� Ȯ��
+//		return User.class.equals(clazz); // 검증하려는 객체가 User 타입인지 확인.
+		return User.class.isAssignableFrom(clazz); // clazz가 User 또는 그 자손인지 확인.
 	}
 
 	@Override
