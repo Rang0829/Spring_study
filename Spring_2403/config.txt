@@ -1,2 +1,2 @@
-car = com.rangrang.b.diCopy1.SportsCar
-engine = com.rangrang.b.diCopy1.Engine
+car = com.rangrang.b.diCopy2.Truck
+engine = com.rangrang.b.diCopy2.Engine
