@@ -72,7 +72,7 @@ public class LoginController {
 
         if(user==null) return false;
 
-        return user.getPwd().equals((pwd);
+        return user.getPwd().equals(pwd);
 //        return "asdf".equals(id) && "1234".equals(pwd);
     }
 }
