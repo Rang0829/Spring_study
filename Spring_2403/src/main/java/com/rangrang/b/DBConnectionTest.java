@@ -11,6 +11,8 @@ public class DBConnectionTest {
         String DB_USER = "";
         String DB_PASSWORD = "";
 
+
+
         Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD); // 데이터베이스의 연결을 얻는다.
         Statement stmt  = conn.createStatement(); // Statement를 생성한다.
 
