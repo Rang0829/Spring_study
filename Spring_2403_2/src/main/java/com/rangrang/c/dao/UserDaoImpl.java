@@ -42,8 +42,8 @@ public class UserDaoImpl implements UserDao {
         try (
                 Connection conn = ds.getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql);
-                ResultSet rs = pstmt.executeQuery(); //  select
         ){
+            ResultSet rs = pstmt.executeQuery(); //  select
             pstmt.setString(1, id);
 
             if (rs.next()) {
