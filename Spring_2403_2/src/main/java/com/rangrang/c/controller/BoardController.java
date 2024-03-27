@@ -1,6 +1,7 @@
 package com.rangrang.c.controller;
 
 import com.rangrang.c.domain.BoardDto;
+import com.rangrang.c.domain.PageHandler;
 import com.rangrang.c.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,17 +21,25 @@ public class BoardController {
     @Autowired
     BoardService boardService;
     @GetMapping("/list")
-    public String list(int page, int pageSize, Model m, HttpServletRequest request) {
+    public String list(Integer page, Integer pageSize, Model m, HttpServletRequest request) {
         if(!loginCheck(request))
             return "redirect:/login/login?toURL="+request.getRequestURL();  // 로그인을 안했으면 로그인 화면으로 이동
 
+        if(page==null) page=1;
+        if(pageSize==null) pageSize=10;
+
         try {
+
+            int totalCnt = boardService.getCount();
+            PageHandler pageHandler = new PageHandler(totalCnt, page, pageSize);
+
             Map map = new HashMap();
             map.put("offset", (page-1)*pageSize);
             map.put("pageSize", pageSize);
 
             List<BoardDto> list = boardService.getPage(map);
             m.addAttribute("list", list);
+            m.addAttribute("ph", pageHandler);
         } catch (Exception e) {
             e.printStackTrace();
         }
