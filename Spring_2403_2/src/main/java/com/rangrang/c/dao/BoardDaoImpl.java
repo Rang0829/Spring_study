@@ -13,6 +13,7 @@ public class BoardDaoImpl implements BoardDao {
     private SqlSession session;
     private static String namespace = "com.rangrang.c.dao.BoardMapper.";
 
+    @Override
     public int count() throws Exception {
         return session.selectOne(namespace+"count");
     } // T selectOne(String statement)
@@ -57,4 +58,15 @@ public class BoardDaoImpl implements BoardDao {
     public int increaseViewCnt(Integer bno) throws Exception {
         return session.update(namespace+"increaseViewCnt", bno);
     } // int update(String statement, Object parameter)
+
+    @Override
+    public int searchResultCnt(SearchCondition sc) throws Exception {
+        return session.selectOne(namespace+"searchResultCnt", sc);
+    } // T selectOne(String statement)
+
+    @Override
+    public List<BoardDto> searchSelectPage(SearchCondition sc) throws Exception {
+        return session.selectList(namespace+"selectPage", sc);
+    } // List<E> selectList(String statement, Object parameter)
+
 }
