@@ -21,7 +21,7 @@ public class BoardDaoImplTest {
     public void searchSelectPageTest() throws Exception {
         boardDao.deleteAll();
         for (int i = 1; i <= 20; i++) {
-            BoardDto boardDto = new BoardDto("title" + i, "asdfasdf", "Asdf");
+            BoardDto boardDto = new BoardDto("title" + i, "asdfasdf", "asdf" + i);
             boardDao.insert(boardDto);
         }
 
@@ -29,19 +29,31 @@ public class BoardDaoImplTest {
         List<BoardDto> list = boardDao.searchSelectPage(sc);
         System.out.println("list = " + list);
         assertTrue(list.size()==2); // 1~20 중에 title2와 title20이 출력.
+
+        sc = new SearchCondition(1, 10, "asdf2", "W" );   // asdf2%
+        list = boardDao.searchSelectPage(sc);
+        System.out.println("list = " + list);
+        assertTrue(list.size()==2);  // 1~20 중에 asdf2와 asdf20이 출력.
     }
 
     @Test
     public void searchResultCntTest() throws Exception {
         boardDao.deleteAll();
         for (int i = 1; i <= 20; i++) {
-            BoardDto boardDto = new BoardDto("title" + i, "asdfasdf", "Asdf");
+            BoardDto boardDto = new BoardDto("title" + i, "asdfasdf", "asdf"+ i);
             boardDao.insert(boardDto);
         }
 
         SearchCondition sc = new SearchCondition(1, 10, "title2", "T" );   // title2%
         int cnt = boardDao.searchResultCnt(sc);
+        System.out.println("cnt = " + cnt);
         assertTrue(cnt==2); // 1~20 중에 title2와 title20이 출력.
+
+        sc = new SearchCondition(1, 10, "asdf2", "W" );   // asdf2%
+        cnt = boardDao.searchResultCnt(sc);
+        System.out.println("cnt = " + cnt);
+        assertTrue(cnt == 2);  // 1~20 중에 asdf2와 asdf20이 출력.
+
     }
 
     @Test
